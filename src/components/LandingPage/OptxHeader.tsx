@@ -20,7 +20,7 @@ const CustomAppBar = styled(AppBar)({
   backgroundColor: "#1A2980 !important",
 });
 
-const Header = () => {
+const OptxHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [displayProfile, setDisplayProfile] = useState(false);
   const open = Boolean(anchorEl);
@@ -114,4 +114,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default OptxHeader;

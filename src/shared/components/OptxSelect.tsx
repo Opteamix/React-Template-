@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import { FormControl, TextFieldVariants } from "@mui/material";
 import { IOption } from "../Interfaces";
 
-interface OptSelectFieldProps<T = unknown> {
+interface OptxSelectFieldProps<T = unknown> {
   id: string;
   label: string;
   options: IOption<T>[];
@@ -13,13 +13,13 @@ interface OptSelectFieldProps<T = unknown> {
   disabled?: boolean;
 }
 
-const OptSelect = ({
+const OptxSelect = ({
   id,
   label,
   options,
   variant = "outlined",
   ...props
-}: OptSelectFieldProps) => {
+}: OptxSelectFieldProps) => {
   return (
     <FormControl>
       {label && <InputLabel>{label}</InputLabel>}
@@ -39,4 +39,4 @@ const OptSelect = ({
   );
 };
 
-export default OptSelect;
+export default OptxSelect;

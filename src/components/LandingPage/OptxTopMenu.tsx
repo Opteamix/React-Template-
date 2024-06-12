@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import { LandingPageTabs } from "./constants/tabs";
 import { useNavigate } from "react-router-dom";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import { TopMenuTabs } from "./constants/OptxTabs";
 
 const CustomNav = styled("nav")({
   display: "flex",
@@ -56,7 +56,15 @@ const SubMenuItem = styled("li")({
   },
 });
 
-const TopMenu = () => {
+const MenuItem = styled.div`
+  display: flex;
+`;
+
+const TextWrapper = styled.span`
+  margin-left: 4px;
+`;
+
+const OptxTopMenu = () => {
   const navigate = useNavigate();
 
   const handleMenuClick = (
@@ -65,22 +73,24 @@ const TopMenu = () => {
   ) => {
     const tabName = tab.label.toLowerCase();
     if (tab.submenu.length > 0) {
-      const menu = submenu.toLowerCase();
+      const menu = submenu.replace(/ /g, "").toLowerCase();
       navigate(`/landing-page/${tabName}/${menu}`);
     } else {
       navigate(`/landing-page/${tabName}`);
     }
   };
 
-  return (
-    <div>
-      <CustomNav>
-        <CustomUl>
-          {LandingPageTabs.map((tab, index) => (
+  const menuItems = () => {
+    return (
+      <>
+        {TopMenuTabs.map((tab, index) => {
+          const Icon = tab.icon;
+          return (
             <CustomLi key={index}>
               {tab.submenu.length > 0 ? (
                 <>
-                  {tab.label}
+                  <Icon />
+                  <TextWrapper>{tab.label}</TextWrapper>
                   <ExpandMore />
                   <SubMenu>
                     {tab.submenu.map((submenu, index) => (
@@ -94,14 +104,25 @@ const TopMenu = () => {
                   </SubMenu>
                 </>
               ) : (
-                <div onClick={() => handleMenuClick(tab)}>{tab.label}</div>
+                <MenuItem onClick={() => handleMenuClick(tab)}>
+                  <Icon />
+                  <TextWrapper>{tab.label}</TextWrapper>
+                </MenuItem>
               )}
             </CustomLi>
-          ))}
-        </CustomUl>
+          );
+        })}
+      </>
+    );
+  };
+
+  return (
+    <div>
+      <CustomNav>
+        <CustomUl>{menuItems()}</CustomUl>
       </CustomNav>
     </div>
   );
 };
 
-export default TopMenu;
+export default OptxTopMenu;

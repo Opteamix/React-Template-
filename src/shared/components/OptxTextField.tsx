@@ -1,6 +1,6 @@
 import TextField, { TextFieldVariants } from "@mui/material/TextField";
 
-interface OptTextFieldProps {
+interface OptxTextFieldProps {
   label: string;
   id?: string;
   defaultValue?: any;
@@ -11,28 +11,28 @@ interface OptTextFieldProps {
   multiline?: boolean;
 }
 
-const OptTextField = ({
+const OptxTextField = ({
   label,
-  id="",
+  id = "",
   defaultValue = "",
   variant = "outlined",
   disabled = false,
   isError = false,
   helperText = "",
   multiline = false,
-}: OptTextFieldProps) => {
+}: OptxTextFieldProps) => {
   return (
-      <TextField
-        id={id}
-        label={label}
-        defaultValue={defaultValue}
-        variant={variant}
-        disabled={disabled}
-        error={isError}
-        helperText={helperText}
-        multiline={multiline}
-      />
+    <TextField
+      id={id}
+      label={label}
+      defaultValue={defaultValue}
+      variant={variant}
+      disabled={disabled}
+      error={isError}
+      helperText={helperText}
+      multiline={multiline}
+    />
   );
 };
 
-export default OptTextField;
+export default OptxTextField;

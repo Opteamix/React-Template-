@@ -1,0 +1,79 @@
+import React, { PropsWithChildren } from "react";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  IconButton,
+} from "@mui/material";
+
+export interface ActionButton {
+  buttonText: string | React.ElementType;
+  onClickFunction: () => void;
+}
+
+interface OptxCardProps extends PropsWithChildren {
+  title: string;
+  width: string;
+  children: React.ReactElement;
+  subTitle?: string;
+  avatar?: string | null;
+  avatarColor?: string;
+  headerActionButtons?: ActionButton[];
+  cardActionButtons?: ActionButton[];
+}
+const OptxCard = ({
+  title,
+  width,
+  children,
+  subTitle = "",
+  avatar = null,
+  avatarColor = "blue",
+  headerActionButtons,
+  cardActionButtons,
+}: OptxCardProps) => {
+  return (
+    <Card sx={{ width: width, height: "auto" }}>
+      <CardHeader
+        avatar={
+          avatar ? (
+            <Avatar sx={{ bgcolor: avatarColor }} aria-label="recipe">
+              {avatar}
+            </Avatar>
+          ) : null
+        }
+        action={
+          headerActionButtons ? (
+            <>
+              {headerActionButtons.map((headerAction: ActionButton) => (
+                <IconButton onClick={headerAction.onClickFunction}>
+                  {typeof headerAction.buttonText === "string" ? (
+                    headerAction.buttonText
+                  ) : (
+                    <headerAction.buttonText />
+                  )}
+                </IconButton>
+              ))}
+            </>
+          ) : null
+        }
+        title={title}
+        subheader={subTitle}
+      />
+      <CardContent>{children}</CardContent>
+      {cardActionButtons && (
+        <CardActions>
+          {cardActionButtons.map((cardAction: any) => (
+            <Button size="small" onClick={cardAction.onClickFunction}>
+              {cardAction.buttonText}
+            </Button>
+          ))}
+        </CardActions>
+      )}
+    </Card>
+  );
+};
+
+export default OptxCard;

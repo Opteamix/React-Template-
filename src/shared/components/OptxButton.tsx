@@ -2,21 +2,23 @@ import Button from "@mui/material/Button";
 
 type TButtonVariant = "contained" | "outlined" | "text";
 
-interface OptButtonProps {
+interface OptxButtonProps {
   buttonText: string;
   variant?: TButtonVariant;
   disabled?: boolean;
+  handleClick?: () => void;
 }
-const OptButton = ({
+const OptxButton = ({
   buttonText,
+  handleClick,
   variant = "contained",
   disabled = false,
-}: OptButtonProps) => {
+}: OptxButtonProps) => {
   return (
-    <Button variant={variant} disabled={disabled}>
+    <Button onClick={handleClick} variant={variant} disabled={disabled}>
       {buttonText}
     </Button>
   );
 };
 
-export default OptButton;
+export default OptxButton;

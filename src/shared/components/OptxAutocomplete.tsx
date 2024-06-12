@@ -1,14 +1,14 @@
 import Autocomplete from "@mui/material/Autocomplete";
-import { IOption } from "../Interfaces";
 import TextField from "@mui/material/TextField";
+import { IOption } from "../Interfaces";
 
-interface OptAutoCompleteProps<T = unknown> {
+interface OptxAutoCompleteProps<T = unknown> {
   id: string;
   label: string;
   options: IOption<T>[];
 }
 
-const OptAutoComplete = ({ id, label, options }: OptAutoCompleteProps) => {
+const OptxAutoComplete = ({ id, label, options }: OptxAutoCompleteProps) => {
   return (
     <Autocomplete
       disablePortal
@@ -19,4 +19,4 @@ const OptAutoComplete = ({ id, label, options }: OptAutoCompleteProps) => {
   );
 };
 
-export default OptAutoComplete;
+export default OptxAutoComplete;

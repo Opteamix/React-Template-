@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "../../shared/styles/GlobalStyles";
 
-const LoginPage = () => {
+const OptxLoginPage = () => {
   const navigate = useNavigate();
 
   const navigateToDashboard = () => {
-    navigate("/landing-page/home/members");
+    navigate("/landing-page/home/sample1");
   };
 
   return (
@@ -15,4 +15,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default OptxLoginPage;
