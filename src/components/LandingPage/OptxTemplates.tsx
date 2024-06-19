@@ -22,6 +22,7 @@ import {
   RadioGroupComponent,
   SelectComponent,
   SimpleModalComponent,
+  SocialMediaComponent,
   SwitchComponent,
   TableComponent,
   TextButtonComponent,
@@ -184,6 +185,14 @@ const OptxTemplates = () => {
             <LineBreakComponent />
             This is second line.
           </div>
+        </RenderComponent>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <RenderComponent
+          title="Social Media (OptxSocialMedia)"
+          component={SocialMediaComponent}
+        >
+          <SocialMediaComponent />
         </RenderComponent>
       </Grid>
       <Grid item xs={12} sm={12} md={8} lg={8}>

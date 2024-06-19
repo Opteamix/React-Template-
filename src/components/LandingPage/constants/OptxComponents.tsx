@@ -33,6 +33,8 @@ import OptxAccordian from "../../../shared/components/OptxAccordian";
 import OptxAccordianSubMenu from "../../../shared/components/OptxAccordianSubMenu";
 import OptxLabel from "../../../shared/components/OptxLabel";
 import OptxLineBreak from "../../../shared/components/OptxLineBreak";
+import OptxSocialMedia from "../../../shared/components/OptxSocialMedia";
+import { SocialMediaValues } from "./OptxSocialMediaValues";
 
 export const TextFieldComponent = () => (
   <OptxTextField
@@ -345,3 +347,5 @@ export const AccordianSubMenuComponent = () => (
 export const LabelComponent = () => <OptxLabel name="FirstName" />;
 
 export const LineBreakComponent = () => <OptxLineBreak />;
+
+export const SocialMediaComponent = () => <OptxSocialMedia socialMediaValues={SocialMediaValues}/>;
