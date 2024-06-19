@@ -16,7 +16,7 @@ export const AutocompletDropdownOptions: IOption[] = [
     { label: "Option5", value: "Option5" },
 ];
 
-export const RadioGroupLabelValues: string[] = [ "Male", "Female"];
+export const RadioGroupLabelValues: string[] = [ "Yes", "No"];
 
 export const dataGridColumns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 100 },

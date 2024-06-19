@@ -30,6 +30,7 @@ const OptxRadioGroup = ({
       >
         {labelValues.map((labelValue: string) => (
           <FormControlLabel
+            key={labelValue}
             value={labelValue.toLowerCase()}
             control={<Radio />}
             label={labelValue}

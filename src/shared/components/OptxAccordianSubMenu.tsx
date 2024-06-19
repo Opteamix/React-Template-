@@ -26,16 +26,16 @@ const OptxAccordianSubMenu = ({
   accordians,
   width = "500px",
 }: OptxAccordianSubMenuProps) => {
-  const SubMenu = ({ subMenuName, items }: any) => {
-    const [open, setOpen] = useState(false);
 
+  const SubMenu = ({ subMenuName, items, index }: any) => {
+    const [open, setOpen] = useState(false);
     const handleClick = () => {
       setOpen(!open);
     };
 
     return (
       <div>
-        <ListItem onClick={handleClick}>
+        <ListItem onClick={handleClick} key={index}>
           <ListItemText primary={subMenuName} />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
@@ -55,7 +55,7 @@ const OptxAccordianSubMenu = ({
   return (
     <>
       {accordians.map((accordian: AccordianSubMenuType) => (
-        <Accordion sx={{ width: width }}>
+        <Accordion sx={{ width: width }} key={accordian.name}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={accordian.name}
@@ -65,15 +65,16 @@ const OptxAccordianSubMenu = ({
           </AccordionSummary>
           <AccordionDetails>
             <List>
-              {accordian.items.map((item: Item) => (
+              {accordian.items.map((item: Item, index: number) => (
                 <>
                   {item.subMenuItems?.length ? (
                     <SubMenu
                       subMenuName={item.itemName}
                       items={item.subMenuItems}
+                      index={index}
                     />
                   ) : (
-                    <ListItem>
+                    <ListItem key={index}>
                       <ListItemText primary={item.itemName} />
                     </ListItem>
                   )}

@@ -47,8 +47,8 @@ const OptxCard = ({
         action={
           headerActionButtons ? (
             <>
-              {headerActionButtons.map((headerAction: ActionButton) => (
-                <IconButton onClick={headerAction.onClickFunction}>
+              {headerActionButtons.map((headerAction: ActionButton, index: number) => (
+                <IconButton onClick={headerAction.onClickFunction} key={index}>
                   {typeof headerAction.buttonText === "string" ? (
                     headerAction.buttonText
                   ) : (
@@ -65,8 +65,8 @@ const OptxCard = ({
       <CardContent>{children}</CardContent>
       {cardActionButtons && (
         <CardActions>
-          {cardActionButtons.map((cardAction: any) => (
-            <Button size="small" onClick={cardAction.onClickFunction}>
+          {cardActionButtons.map((cardAction: any, index: number) => (
+            <Button size="small" onClick={cardAction.onClickFunction} key={index}>
               {cardAction.buttonText}
             </Button>
           ))}

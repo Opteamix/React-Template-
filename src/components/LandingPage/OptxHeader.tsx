@@ -9,11 +9,12 @@ import Avatar from "@mui/material/Avatar";
 import { IconButton, ListItemIcon } from "@mui/material";
 import Logout from "@mui/icons-material/Logout";
 import styled from "styled-components";
-import OpteamixLogo from "../../assets/images/Opteamix.jpg";
+import CompanyLogo from "../../assets/images/CompanyLogo.png";
 import Profile from "./Profile";
 
 const Logo = styled.img`
   height: 60px;
+  border-radius: 50%;
 `;
 
 const CustomAppBar = styled(AppBar)({
@@ -50,13 +51,13 @@ const OptxHeader = () => {
     <>
       <CustomAppBar position="static">
         <Toolbar>
-          <Logo src={OpteamixLogo} alt="companyLogo" />
+          <Logo src={CompanyLogo} alt="companyLogo" />
           <Typography
             variant="h6"
             component="div"
             sx={{ display: "flex", flexGrow: 1, marginLeft: "10px" }}
           >
-            Opteamix
+            Company Name
           </Typography>
           User Name
           <IconButton onClick={handleClick} color="inherit">

@@ -14,11 +14,11 @@ interface OptxAccordianProps {
   width?: string;
 }
 
-const OptxAccordian = ({ accordians, width = "500px" }: OptxAccordianProps) => {
+const OptxAccordian = ({ accordians, width = "300px" }: OptxAccordianProps) => {
   return (
     <>
       {accordians.map((accordian: AccordianType) => (
-        <Accordion sx={{ width: width }}>
+        <Accordion sx={{ width: width }} key={accordian.name}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={accordian.name}
