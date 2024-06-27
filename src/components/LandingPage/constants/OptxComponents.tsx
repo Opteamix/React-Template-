@@ -1,5 +1,5 @@
 import { useState } from "react";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import OptxAutoComplete from "../../../shared/components/OptxAutocomplete";
@@ -24,8 +24,8 @@ import OptxAlertModal from "../../../shared/components/OptxAlertModal";
 import OptxLoader from "../../../shared/components/OptxLoader";
 import OptxDatePicker from "../../../shared/components/OptxDatePicker";
 import { OptxNotistack } from "../../../shared/components/OptxNotistack/OptxNotistack";
-import OptxGrid from "../../../shared/components/OptxGrid";
-import OptxCard, { ActionButton } from "../../../shared/components/OptxCard";
+import OptxTable from "../../../shared/components/OptxTable";
+import OptxComplexCard, { ActionButton } from "../../../shared/components/OptxComplexCard";
 import OptxDateRangePicker, {
   DateRangeValues,
 } from "../../../shared/components/OptxDateRangePicker";
@@ -35,11 +35,13 @@ import OptxLabel from "../../../shared/components/OptxLabel";
 import OptxLineBreak from "../../../shared/components/OptxLineBreak";
 import OptxSocialMedia from "../../../shared/components/OptxSocialMedia";
 import { SocialMediaValues } from "./OptxSocialMediaValues";
+import OptxCard from "../../../shared/components/OptxCard";
 
 export const TextFieldComponent = () => (
   <OptxTextField
     id="input-text-field"
     label="Label"
+    placeholder="Placeholder"
     variant="outlined"
     disabled={false}
     helperText="This is helper text"
@@ -50,6 +52,7 @@ export const SelectComponent = () => (
   <OptxSelect
     id="select-dropdown"
     label="Select"
+    defaultValue={1}
     options={SelectFieldOptions}
   />
 );
@@ -59,19 +62,20 @@ export const AutocompleteDropdownComponent = () => (
     id="autocomplete-dropdown"
     label="Options"
     options={AutocompletDropdownOptions}
+    placeholder="Select Option"
   />
 );
 
 export const TextButtonComponent = () => (
-  <OptxButton buttonText="Text" variant="text" />
+  <OptxButton buttonText="Text" variant="text" handleClick={function noRefCheck() {}}/>
 );
 
 export const FilledButtonComponent = () => (
-  <OptxButton buttonText="Contained" variant="contained" />
+  <OptxButton buttonText="Contained" variant="contained" handleClick={function noRefCheck() {}}/>
 );
 
 export const OutlinedButtonComponent = () => (
-  <OptxButton buttonText="Outlined" variant="outlined" />
+  <OptxButton buttonText="Outlined" variant="outlined" handleClick={function noRefCheck() {}}/>
 );
 
 export const CheckboxComponent = () => {
@@ -79,7 +83,7 @@ export const CheckboxComponent = () => {
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
-  return <OptxCheckbox checked={checked} onChange={handleCheckboxChange} />;
+  return <OptxCheckbox label="Label" checked={checked} onChange={handleCheckboxChange} />;
 };
 
 export const RadioGroupComponent = () => {
@@ -199,16 +203,17 @@ export const LoaderBackdropComponent = () => {
 };
 
 export const DatePickerComponent = () => {
-  const [dateValue, setDateValue] = useState<Dayjs | null>(dayjs(new Date()));
+  const [dateValue, setDateValue] = useState<Dayjs | null>(null);
 
   return (
     <OptxDatePicker
       label="Date picker"
       value={dateValue}
       handleChange={(newValue: Dayjs) => setDateValue(newValue)}
+      format="MM/DD/YYYY"
       disabled={false}
       readOnly={false}
-      clearable={false}
+      clearable={true}
     />
   );
 };
@@ -264,7 +269,7 @@ export const NotistackErrorComponent = () => {
 };
 
 export const TableComponent = () => (
-  <OptxGrid
+  <OptxTable
     rows={dataGridRows}
     columns={dataGridColumns}
     pageSizeOptions={[5, 10]}
@@ -272,6 +277,14 @@ export const TableComponent = () => (
 );
 
 export const CardComponent = () => {
+  return (
+    <OptxCard width="300px" height="200px">
+      <p>Add content here</p>
+    </OptxCard>
+  );
+};
+
+export const ComplexCardComponent = () => {
   const handleShareClick = () => {
     console.log("Share button click");
   };
@@ -302,7 +315,7 @@ export const CardComponent = () => {
     },
   ];
   return (
-    <OptxCard
+    <OptxComplexCard
       title="Sample Title"
       width="300px"
       subTitle="September 14, 2016"
@@ -316,7 +329,7 @@ export const CardComponent = () => {
         together with your guests. Add 1 cup of frozen peas along with the
         mussels, if you like.
       </Typography>
-    </OptxCard>
+    </OptxComplexCard>
   );
 };
 

@@ -8,7 +8,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Tooltip from "@mui/material/Tooltip";
 import CardContent from "@mui/material/CardContent";
 
-const CustomCard = styled(Card)<{ width?: string; height?: string }>`
+export const CustomCard = styled(Card)<{ width?: string; height?: string }>`
   width: ${({ width }) =>
     width ? (width === "auto" ? "auto" : `${width}px`) : "300px"};
   height: ${({ height }) => (height ? height : 200)}px;
@@ -27,7 +27,7 @@ interface RenderComponentProps {
   component: string | (() => JSX.Element);
   width?: string;
   height?: string;
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
 
 const RenderComponent = ({
@@ -46,7 +46,9 @@ const RenderComponent = ({
             text={
               typeof component === "string"
                 ? component
-                : reactElementToJSXString(component())
+                : reactElementToJSXString(component(), {
+                  useBooleanShorthandSyntax: false,
+                })
             }
           >
             <Tooltip title="Copy">

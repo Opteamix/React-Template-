@@ -7,7 +7,7 @@ const GridWrapper = styled.div<{ height?: string }>`
   height: ${({ height }) => height || "100%"};
 `;
 
-interface OptxGridProps extends DataGridProps {
+interface OptxTableProps extends DataGridProps {
   height?: string;
   pageSizeOptions?: number[];
   checkboxSelection?: boolean;
@@ -17,7 +17,7 @@ interface OptxGridProps extends DataGridProps {
 
 const defaultPageSizeOptions = [25, 50, 100];
 
-const OptxGrid = ({
+const OptxTable = ({
   height,
   rows,
   columns,
@@ -30,7 +30,7 @@ const OptxGrid = ({
   disableColumnMenu = false,
   hideFooterPagination = false,
   ...props
-}: OptxGridProps) => {
+}: OptxTableProps) => {
   return (
     <GridWrapper height={height}>
       <DataGrid
@@ -53,4 +53,4 @@ const OptxGrid = ({
   );
 };
 
-export default OptxGrid;
+export default OptxTable;

@@ -8,6 +8,7 @@ interface OptxDatePickerProps {
   disabled?: boolean;
   readOnly?: boolean;
   clearable?: boolean;
+  format?: string;
 }
 
 const OptxDatePicker = ({
@@ -17,6 +18,7 @@ const OptxDatePicker = ({
   disabled = false,
   readOnly = false,
   clearable = true,
+  format = "MM/DD/YYYY"
 }: OptxDatePickerProps) => {
   const [cleared, setCleared] = useState(false);
 
@@ -38,6 +40,7 @@ const OptxDatePicker = ({
       onChange={handleChange}
       disabled={disabled}
       readOnly={readOnly}
+      format={format}
       slotProps={{
         field: { clearable: clearable, onClear: () => setCleared(true) },
       }}

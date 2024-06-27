@@ -5,19 +5,21 @@ import { FormControl, TextFieldVariants } from "@mui/material";
 import { IOption } from "../Interfaces";
 
 interface OptxSelectFieldProps<T = unknown> {
-  id: string;
+  id?: string;
   label: string;
   options: IOption<T>[];
   variant?: TextFieldVariants;
+  defaultValue?: number | null;
   error?: boolean;
   disabled?: boolean;
 }
 
 const OptxSelect = ({
-  id,
   label,
   options,
   variant = "outlined",
+  defaultValue,
+  id = "",
   ...props
 }: OptxSelectFieldProps) => {
   return (
@@ -27,6 +29,7 @@ const OptxSelect = ({
         labelId={`${id}-select-label`}
         id={`${id}-select`}
         label={label}
+        defaultValue={defaultValue}
         {...props}
       >
         {options.map((option, index) => (

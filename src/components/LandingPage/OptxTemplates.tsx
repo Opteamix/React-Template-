@@ -1,10 +1,18 @@
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import CardHeader from "@mui/material/CardHeader";
+import CopyToClipboard from "react-copy-to-clipboard";
+import CardContent from "@mui/material/CardContent";
+import IconButton from "@mui/material/IconButton";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Tooltip from "@mui/material/Tooltip";
 import {
   AccordianComponent,
   AccordianSubMenuComponent,
   AlertModalComponent,
   AutocompleteDropdownComponent,
-  CardComponent,
+  ComplexCardComponent,
   CheckboxComponent,
   DatePickerComponent,
   DateRangePickerComponent,
@@ -28,10 +36,16 @@ import {
   TextButtonComponent,
   TextFieldComponent,
   TooltipComponent,
+  CardComponent,
 } from "./constants/OptxComponents";
-import RenderComponent from "../../shared/RenderComponent";
+import RenderComponent, { CustomCard } from "../../shared/RenderComponent";
+import OptxDynamicGrid from "../../shared/components/OptxDynamicGrid";
+import OptxTextField from "../../shared/components/OptxTextField";
 
 const OptxTemplates = () => {
+  const [gridRows, setGridRows] = useState("");
+  const [gridColumns, setGridColumns] = useState("");
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -195,24 +209,75 @@ const OptxTemplates = () => {
           <SocialMediaComponent />
         </RenderComponent>
       </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={4}>
+        <RenderComponent
+          title="Card (OptxCard)"
+          component={CardComponent}
+          width="350"
+          height="350"
+        >
+          <CardComponent />
+        </RenderComponent>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={4}>
+        <RenderComponent
+          title="Complex Card (OptxComplexCard)"
+          component={ComplexCardComponent}
+          width="350"
+          height="350"
+        >
+          <ComplexCardComponent />
+        </RenderComponent>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={4}>
+        <CustomCard width="350" height="350">
+          <CardHeader
+            title="Dynamic Grid(OptxDynamicGrid)"
+            action={
+              <CopyToClipboard text={OptxDynamicGrid(gridRows, gridColumns)}>
+                <Tooltip title="Copy">
+                  <IconButton
+                    aria-label="copy"
+                    disabled={!gridRows || !gridColumns}
+                  >
+                    <ContentCopyIcon />
+                  </IconButton>
+                </Tooltip>
+              </CopyToClipboard>
+            }
+          />
+          <CardContent>
+            <Stack spacing={2} direction="row">
+              <OptxTextField
+                id="grid-rows"
+                label="Rows"
+                placeholder="No. of Rows"
+                variant="outlined"
+                disabled={false}
+                value={gridRows}
+                onChange={(event) => setGridRows(event.target.value)}
+              />
+              <OptxTextField
+                id="grid-columns"
+                label="Columns"
+                placeholder="No. of Columns"
+                variant="outlined"
+                disabled={false}
+                value={gridColumns}
+                onChange={(event) => setGridColumns(event.target.value)}
+              />
+            </Stack>
+          </CardContent>
+        </CustomCard>
+      </Grid>
       <Grid item xs={12} sm={12} md={8} lg={8}>
         <RenderComponent
-          title="Table (OptxGrid)"
+          title="Table (OptxTable)"
           component={TableComponent}
           width="800"
           height="500"
         >
           <TableComponent />
-        </RenderComponent>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={4}>
-        <RenderComponent
-          title="Card (OptxCard)"
-          component={CardComponent}
-          width="400"
-          height="400"
-        >
-          <CardComponent />
         </RenderComponent>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={6}>
