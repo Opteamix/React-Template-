@@ -2,9 +2,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import OptxLoginPage from "./components/OptxLoginPage/OptxLoginPage";
 import OptxLandingPage from "./components/LandingPage/OptxLandingPage";
 import Sample1 from "./components/LandingPage/Sample1";
-import Sample2 from "./components/LandingPage/Sample2";
 import OptxContact from "./components/LandingPage/OptxContact";
 import OptxTemplates from "./components/LandingPage/OptxTemplates";
+import SamplePage1 from "./components/LandingPage/SamplePage1";
+import SamplePage2 from "./components/LandingPage/SamplePage2";
 
 export const AppRoutes = () => {
   const childRoutes = [
@@ -17,8 +18,12 @@ export const AppRoutes = () => {
       element: <Sample1 />,
     },
     {
-      path: "/landing-page/home/sample2",
-      element: <Sample2 />,
+      path: "/landing-page/home/sample2/samplepage1",
+      element: <SamplePage1 />,
+    },
+    {
+      path: "/landing-page/home/sample2/samplepage2",
+      element: <SamplePage2 />,
     },
     {
       path: "/landing-page/contact",
