@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import OptxLoginPage from "./components/OptxLoginPage/OptxLoginPage";
 import OptxLandingPage from "./components/LandingPage/OptxLandingPage";
 import Sample1 from "./components/LandingPage/Sample1";
@@ -8,6 +8,8 @@ import SamplePage1 from "./components/LandingPage/SamplePage1";
 import SamplePage2 from "./components/LandingPage/SamplePage2";
 import NestedPage1 from "./components/LandingPage/NestedPage1";
 import NestedPage2 from "./components/LandingPage/NestedPage2";
+import ProtectedRoutes from "./utils/protectedRoutes";
+import React from 'react';
 
 export const AppRoutes = () => {
   const childRoutes = [
@@ -44,17 +46,23 @@ export const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
+      element:<Navigate to="/login" replace />
+    },
+    {
+      path: "/login",
       element: <OptxLoginPage />,
     },
     {
       path: "/landing-page",
-      element: <OptxLandingPage />,
+      element: <ProtectedRoutes>
+                  <OptxLandingPage />
+               </ProtectedRoutes>,
       children: childRoutes,
     },
-    // {
-    //     path: '*',
-    //     element: //any unauthorized page,
-    // },
+    {
+        path: '*',
+        element: <Navigate to="/login" replace />
+    },
   ]);
 
   return <RouterProvider router={router} />;
