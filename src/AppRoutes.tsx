@@ -6,6 +6,8 @@ import OptxContact from "./components/LandingPage/OptxContact";
 import OptxTemplates from "./components/LandingPage/OptxTemplates";
 import SamplePage1 from "./components/LandingPage/SamplePage1";
 import SamplePage2 from "./components/LandingPage/SamplePage2";
+import NestedPage1 from "./components/LandingPage/NestedPage1";
+import NestedPage2 from "./components/LandingPage/NestedPage2";
 
 export const AppRoutes = () => {
   const childRoutes = [
@@ -24,6 +26,14 @@ export const AppRoutes = () => {
     {
       path: "/landing-page/home/sample2/samplepage2",
       element: <SamplePage2 />,
+    },
+    {
+      path: "/landing-page/home/sample2/samplepage2/nestedpage1",
+      element: <NestedPage1 />,
+    },
+    {
+      path: "/landing-page/home/sample2/samplepage2/nestedpage2",
+      element: <NestedPage2 />,
     },
     {
       path: "/landing-page/contact",

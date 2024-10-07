@@ -11,15 +11,33 @@ import Logout from "@mui/icons-material/Logout";
 import styled from "styled-components";
 import CompanyLogo from "../../assets/images/CompanyLogo.png";
 import Profile from "./Profile";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSidebarState } from "../../utils/sideBarSlice";
+import DehazeIcon from '@mui/icons-material/Dehaze';
 
 const Logo = styled.img`
-  height: 60px;
+  height: 1.5rem;
+  width: 1.3125rem;
   border-radius: 50%;
 `;
 
-const CustomAppBar = styled(AppBar)({
-  backgroundColor: "#1A2980 !important",
-});
+const CustomAppBar = styled(AppBar)`
+  background-color: black !important;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+`;
+
+const BarsIcon = styled(DehazeIcon)`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  list-style: none;
+  cursor: pointer;
+`;
 
 const OptxHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -47,10 +65,19 @@ const OptxHeader = () => {
     setDisplayProfile(false);
   };
 
+  const dispatch = useDispatch();
+
+  const sidebarState = useSelector((store: any) => store.sidebar.show);
+
+  const handleSideBarToggle = () => {
+    dispatch(updateSidebarState(!sidebarState));
+  };
+
   return (
     <>
       <CustomAppBar position="static">
         <Toolbar>
+          <BarsIcon onClick={handleSideBarToggle} />
           <Logo src={CompanyLogo} alt="companyLogo" />
           <Typography
             variant="h6"

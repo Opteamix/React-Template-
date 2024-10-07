@@ -10,6 +10,8 @@ const NavBar = styled.nav`
   background-color: #d0d0dc;
   height: 48px;
   color: #000;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
   @media screen and (max-width: 960px) {
     display: none;
   }
